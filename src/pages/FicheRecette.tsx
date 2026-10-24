@@ -82,7 +82,14 @@ export default function FicheRecette() {
           </div>
           <h1>{r.titre}</h1>
           {r.description && <p className="fiche__description">{r.description}</p>}
-          <Etoiles note={r.note} onChange={(note) => changer({ note })} />
+          <div className="fiche__actions">
+            <Etoiles note={r.note} onChange={(note) => changer({ note })} />
+            {r.etapes.length > 0 && (
+              <Link to={`/recette/${r.id}/cuisine?portions=${portions}`} className="bouton bouton--principal">
+                <Icone nom="toque" taille={20} /> Mode cuisine
+              </Link>
+            )}
+          </div>
         </header>
 
         <dl className="fiche__temps">

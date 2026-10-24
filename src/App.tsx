@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import { useSession } from './lib/session'
 import { supabaseConfigure } from './lib/supabase'
 import BarreNavigation from './components/BarreNavigation'
@@ -8,14 +8,22 @@ import Reglages from './pages/Reglages'
 import FicheRecette from './pages/FicheRecette'
 import FormulaireRecette from './pages/FormulaireRecette'
 import Importer from './pages/Importer'
+import ModeCuisine from './pages/ModeCuisine'
+import BandeauMinuteurs from './components/BandeauMinuteurs'
 import ConfigManquante from './pages/ConfigManquante'
 
 export default function App() {
   const session = useSession()
+  const { pathname } = useLocation()
 
   if (!supabaseConfigure) return <ConfigManquante />
   if (session === undefined) return <div className="chargement" aria-label="Chargement" />
   if (session === null) return <Connexion />
+
+  // Le mode cuisine occupe tout l'écran, sans la barre de navigation.
+  if (pathname.endsWith('/cuisine')) {
+    return <Routes><Route path="/recette/:id/cuisine" element={<ModeCuisine />} /></Routes>
+  }
 
   return (
     <div className="app">
@@ -30,6 +38,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
+      <BandeauMinuteurs />
       <BarreNavigation />
     </div>
   )

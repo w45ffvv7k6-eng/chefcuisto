@@ -3,9 +3,17 @@
 Mon carnet de recettes personnel : les recettes de Maman et celles trouvées sur le web,
 avec de belles photos, sur ordinateur comme sur iPhone.
 
-> **État actuel : étape 4.** Galerie, fiches recettes avec portions ajustables, favoris
-> et étoiles, 3 recettes d'exemple, ajout / modification / suppression avec photos,
-> import depuis un lien (testé sur Marmiton, Betty Bossi et 750g). La recherche arrive à l'étape 5.
+> **État actuel : étape 6.** Galerie, recherche et filtres, fiches recettes avec portions
+> ajustables, ajout / modification / suppression avec photos, import depuis un lien
+> (testé sur Marmiton, Betty Bossi et 750g), mode cuisine avec minuteurs.
+
+## Mode cuisine
+
+Sur une fiche, touche **Mode cuisine** : les ingrédients à cocher, puis une étape à la fois en
+gros caractères (glisse vers la gauche ou la droite pour changer d'étape). L'écran reste allumé.
+Quand une étape contient une durée (« 35 minutes »), un bouton lance un minuteur ; il sonne
+même si tu changes d'écran dans Cuisto. **Garde l'app ouverte** : si tu passes à une autre app,
+l'iPhone peut endormir Cuisto et la sonnerie attendra ton retour.
 
 ## Importer une recette du web
 
