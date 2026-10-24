@@ -3,9 +3,17 @@
 Mon carnet de recettes personnel : les recettes de Maman et celles trouvées sur le web,
 avec de belles photos, sur ordinateur comme sur iPhone.
 
-> **État actuel : étape 3.** Galerie, fiches recettes avec portions ajustables, favoris
-> et étoiles, 3 recettes d'exemple, ajout / modification / suppression avec photos.
-> L'import depuis une URL arrive à l'étape 4.
+> **État actuel : étape 4.** Galerie, fiches recettes avec portions ajustables, favoris
+> et étoiles, 3 recettes d'exemple, ajout / modification / suppression avec photos,
+> import depuis un lien (testé sur Marmiton, Betty Bossi et 750g). La recherche arrive à l'étape 5.
+
+## Importer une recette du web
+
+Ajouter → « Importe-la depuis son lien », colle l'adresse de la page, puis relis le formulaire
+prérempli avant d'enregistrer. Cuisto lit les données « schema.org/Recipe » que publient la
+plupart des sites de recettes ; sinon il récupère au moins le titre, la photo et la description.
+Chaque lundi, GitHub vérifie automatiquement que Marmiton, Betty Bossi et 750g fonctionnent
+toujours (onglet Actions → « Tester l'import »).
 
 ## Comment ça marche
 

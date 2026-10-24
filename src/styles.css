@@ -362,3 +362,13 @@ textarea { resize: vertical; line-height: 1.45; }
 .fiche__modifier { position: absolute; top: calc(env(safe-area-inset-top) + 14px); right: 70px; z-index: 2; background: rgba(255, 255, 255, .92); color: #2b211b; }
 @media (min-width: 900px) { .fiche__modifier { top: 80px; } }
 [hidden] { display: none !important; }
+
+/* ---------- Import ---------- */
+.rangee-boutons { display: flex; flex-wrap: wrap; gap: 10px; }
+.rangee-boutons .bouton--principal { flex: 1; }
+.bandeau {
+  display: flex; align-items: center; gap: 10px; margin: 0 0 16px; padding: 14px 16px;
+  border-radius: var(--rayon); background: color-mix(in srgb, var(--olive) 14%, var(--surface));
+  color: var(--texte); text-decoration: none;
+}
+.bandeau--lien strong { color: var(--accent); }

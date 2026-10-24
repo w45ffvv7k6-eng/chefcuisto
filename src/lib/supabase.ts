@@ -10,6 +10,9 @@ const key = (import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined)?.trim
 // en local, variables du dépôt GitHub en ligne).
 export const supabaseConfigure = Boolean(url && key)
 
-export const supabase = createClient(url ?? 'http://localhost', key ?? 'absent', {
+export const supabaseUrl = url ?? 'http://localhost'
+export const supabaseCle = key ?? 'absent'
+
+export const supabase = createClient(supabaseUrl, supabaseCle, {
   auth: { persistSession: true, autoRefreshToken: true },
 })

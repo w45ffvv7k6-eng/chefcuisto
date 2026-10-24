@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type DragEvent, type FormEvent } from 'react'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { brouillonDepuisRecette, brouillonVide, cle, enMinutes, type Brouillon, type EtapeBrouillon } from '../lib/brouillon'
 import { preparerImage } from '../lib/images'
 import { lireIngredients } from '../lib/ingredientsTexte'
@@ -61,6 +61,7 @@ export default function FormulaireRecette() {
     }
   }, [id, location.state])
 
+  const importee = Boolean((location.state as { importee?: boolean } | null)?.importee)
   const ingredients = useMemo(() => lireIngredients(b?.ingredients ?? ''), [b?.ingredients])
 
   if (erreur && !b) return <section className="page"><p className="erreur">Oups : {erreur}</p></section>
@@ -172,6 +173,14 @@ export default function FormulaireRecette() {
         <p className="surtitre">{id ? 'Modifier' : 'Nouvelle recette'}</p>
         <h1>{id ? b.titre || 'Recette' : 'Ajouter une recette'}</h1>
       </header>
+
+      {!id && (importee ? (
+        <p className="bandeau">Recette importée : relis-la et corrige ce qu'il faut, puis enregistre.</p>
+      ) : (
+        <Link to="/importer" className="bandeau bandeau--lien">
+          <Icone nom="lien" taille={20} /> <span>Tu as trouvé une recette sur le web ? <strong>Importe-la depuis son lien</strong></span>
+        </Link>
+      ))}
 
       <section className="bloc">
         <h2>Photos</h2>

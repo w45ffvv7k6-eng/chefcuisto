@@ -7,6 +7,7 @@ import Accueil from './pages/Accueil'
 import Reglages from './pages/Reglages'
 import FicheRecette from './pages/FicheRecette'
 import FormulaireRecette from './pages/FormulaireRecette'
+import Importer from './pages/Importer'
 import ConfigManquante from './pages/ConfigManquante'
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/recette/:id" element={<FicheRecette />} />
           <Route path="/recette/:id/modifier" element={<FormulaireRecette />} />
           <Route path="/ajouter" element={<FormulaireRecette />} />
+          <Route path="/importer" element={<Importer />} />
           <Route path="/reglages" element={<Reglages email={session.user.email ?? ''} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
