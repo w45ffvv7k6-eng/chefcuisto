@@ -17,6 +17,7 @@ const CHEMINS: Record<string, string> = {
   haut: 'M6 15l6-6 6 6',
   bas: 'M6 9l6 6 6-6',
   crayon: 'M4 20h4L19 9l-4-4L4 16zM14 6l4 4',
+  loupe: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
   toque: 'M6 14a4 4 0 0 1-.5-8A5 5 0 0 1 12 3a5 5 0 0 1 6.5 3 4 4 0 0 1-.5 8v6H6zM6 17h12',
 }
 
