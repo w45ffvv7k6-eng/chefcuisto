@@ -1,17 +1,32 @@
 import { useEffect, useState } from 'react'
+import { chargerRecettes, type RecetteComplete } from '../lib/recettes'
+import { installerExemples } from '../lib/exemples'
 import { supabase } from '../lib/supabase'
+import CarteRecette from '../components/CarteRecette'
 
-// Étape 1 : vérifie simplement que la base répond. La galerie arrive à l'étape 2.
 export default function Accueil() {
-  const [nombre, setNombre] = useState<number | null>(null)
+  const [recettes, setRecettes] = useState<RecetteComplete[] | null>(null)
   const [erreur, setErreur] = useState('')
+  const [installation, setInstallation] = useState(false)
 
-  useEffect(() => {
-    supabase.from('recettes').select('id', { count: 'exact', head: true }).then(({ count, error }) => {
-      if (error) setErreur(error.message)
-      else setNombre(count ?? 0)
-    })
-  }, [])
+  function charger() {
+    chargerRecettes().then(setRecettes).catch((e) => setErreur(e.message))
+  }
+  useEffect(charger, [])
+
+  async function ajouterExemples() {
+    setInstallation(true)
+    setErreur('')
+    try {
+      const { data } = await supabase.auth.getUser()
+      await installerExemples(data.user!.id)
+      charger()
+    } catch (e) {
+      setErreur((e as Error).message)
+    } finally {
+      setInstallation(false)
+    }
+  }
 
   return (
     <section className="page">
@@ -19,18 +34,28 @@ export default function Accueil() {
         <p className="surtitre">Mon carnet</p>
         <h1>Recettes</h1>
       </header>
-      <div className="vide">
-        {erreur ? (
-          <p className="erreur">La base de données ne répond pas : {erreur}</p>
-        ) : nombre === null ? (
-          <p>Chargement…</p>
-        ) : (
-          <>
-            <p className="vide__titre">Tout est prêt.</p>
-            <p>La connexion à ta base fonctionne ({nombre} recette{nombre > 1 ? 's' : ''}). La galerie arrive à la prochaine étape.</p>
-          </>
-        )}
-      </div>
+
+      {erreur && <p className="erreur" role="alert">Oups : {erreur}</p>}
+
+      {recettes === null && !erreur && (
+        <div className="grille">{[0, 1, 2].map((i) => <div key={i} className="carte carte--fantome" />)}</div>
+      )}
+
+      {recettes?.length === 0 && (
+        <div className="vide">
+          <p className="vide__titre">Ton carnet est encore vide</p>
+          <p>Ajoute 3 recettes d'exemple pour voir à quoi ressemble Cuisto. Tu pourras les supprimer ensuite.</p>
+          <button className="bouton bouton--principal" onClick={ajouterExemples} disabled={installation}>
+            {installation ? 'Ajout en cours…' : 'Ajouter les recettes d’exemple'}
+          </button>
+        </div>
+      )}
+
+      {recettes && recettes.length > 0 && (
+        <div className="grille">
+          {recettes.map((r) => <CarteRecette key={r.id} recette={r} />)}
+        </div>
+      )}
     </section>
   )
 }

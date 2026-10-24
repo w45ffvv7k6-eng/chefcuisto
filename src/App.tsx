@@ -5,6 +5,7 @@ import BarreNavigation from './components/BarreNavigation'
 import Connexion from './pages/Connexion'
 import Accueil from './pages/Accueil'
 import Reglages from './pages/Reglages'
+import FicheRecette from './pages/FicheRecette'
 import ConfigManquante from './pages/ConfigManquante'
 
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
       <main className="contenu">
         <Routes>
           <Route path="/" element={<Accueil />} />
+          <Route path="/recette/:id" element={<FicheRecette />} />
           <Route path="/reglages" element={<Reglages email={session.user.email ?? ''} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

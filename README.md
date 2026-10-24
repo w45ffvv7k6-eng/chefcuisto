@@ -3,8 +3,8 @@
 Mon carnet de recettes personnel : les recettes de Maman et celles trouvées sur le web,
 avec de belles photos, sur ordinateur comme sur iPhone.
 
-> **État actuel : étape 1 (fondations).** L'app s'installe sur le téléphone, on s'y
-> connecte et elle parle à la base de données. La galerie et les fiches arrivent à l'étape 2.
+> **État actuel : étape 2.** Galerie, fiches recettes avec portions ajustables, favoris
+> et étoiles, 3 recettes d'exemple. L'ajout et la modification arrivent à l'étape 3.
 
 ## Comment ça marche
 
@@ -118,3 +118,10 @@ supabase/
   migrations/        structure de la base de données
 .github/workflows/   mise en ligne automatique
 ```
+
+## Crédits des photos d'exemple
+
+Photos venant de [Wikimedia Commons](https://commons.wikimedia.org), sous licence libre :
+- Tarte aux pommes : Manuel Flury, CC BY 2.5 ; part avec chantilly : Randalfino, CC BY 2.0
+- Gratin dauphinois : Ludovic Péron, CC BY-SA 3.0
+- Gratin de courge butternut : DocteurCosmos, CC BY 3.0
