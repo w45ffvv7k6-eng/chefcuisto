@@ -1,0 +1,169 @@
+/* ---------- Couleurs et typographie ---------- */
+:root {
+  --fond: #fbf6ee;
+  --surface: #ffffff;
+  --surface-2: #f3eadc;
+  --texte: #2b211b;
+  --texte-doux: #7a6a5d;
+  --accent: #b5543a;          /* terracotta */
+  --accent-texte: #ffffff;
+  --olive: #6f7a3e;
+  --bordure: #e6d9c6;
+  --ombre: 0 6px 24px rgba(74, 46, 26, 0.10);
+  --rayon: 18px;
+  --police-titre: 'Fraunces', Georgia, serif;
+  --police-texte: 'Nunito Sans', -apple-system, system-ui, sans-serif;
+  --haut-nav: 64px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --fond: #1c1714;
+    --surface: #2a221d;
+    --surface-2: #352b25;
+    --texte: #f3e9dd;
+    --texte-doux: #b5a291;
+    --accent: #e07a5a;
+    --accent-texte: #1c1714;
+    --olive: #a9b56b;
+    --bordure: #43372f;
+    --ombre: 0 6px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --fond: #1c1714;
+  --surface: #2a221d;
+  --surface-2: #352b25;
+  --texte: #f3e9dd;
+  --texte-doux: #b5a291;
+  --accent: #e07a5a;
+  --accent-texte: #1c1714;
+  --olive: #a9b56b;
+  --bordure: #43372f;
+  --ombre: 0 6px 24px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+h1, h2, h3 { font-family: var(--police-titre); font-weight: 700; line-height: 1.15; margin: 0 0 .4em; }
+h1 { font-size: 2.1rem; }
+h2 { font-size: 1.3rem; }
+a { color: var(--accent); }
+code { background: var(--surface-2); padding: .1em .35em; border-radius: 6px; font-size: .9em; }
+button { font: inherit; color: inherit; }
+
+/* ---------- Mise en page ---------- */
+.app { min-height: 100dvh; }
+.contenu {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: calc(env(safe-area-inset-top) + 20px) 16px calc(var(--haut-nav) + env(safe-area-inset-bottom) + 24px);
+}
+.page__entete { margin-bottom: 20px; }
+.surtitre { margin: 0; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+.discret { color: var(--texte-doux); }
+.erreur { color: #c0392b; }
+.chargement { min-height: 100dvh; }
+
+.bloc {
+  background: var(--surface);
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.vide {
+  text-align: center;
+  padding: 48px 20px;
+  background: var(--surface);
+  border-radius: var(--rayon);
+  border: 1px dashed var(--bordure);
+  color: var(--texte-doux);
+}
+.vide__titre { font-family: var(--police-titre); font-size: 1.4rem; color: var(--texte); margin: 0 0 .3em; }
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px;
+  border-radius: 999px;
+  border: 1px solid var(--bordure);
+  background: var(--surface);
+  font-weight: 700;
+  cursor: pointer;
+}
+.bouton--principal { background: var(--accent); border-color: var(--accent); color: var(--accent-texte); }
+.bouton:disabled { opacity: .6; }
+
+.segments { display: flex; background: var(--surface-2); border-radius: 999px; padding: 4px; gap: 4px; }
+.segment { flex: 1; min-height: 42px; border: 0; border-radius: 999px; background: transparent; font-weight: 600; cursor: pointer; }
+.segment.est-actif { background: var(--surface); box-shadow: var(--ombre); color: var(--accent); }
+
+/* ---------- Formulaires ---------- */
+label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 14px; }
+input, textarea, select {
+  display: block; width: 100%; margin-top: 6px;
+  font: inherit; font-size: 17px; /* 17px évite le zoom automatique sur iPhone */
+  color: var(--texte); background: var(--fond);
+  border: 1px solid var(--bordure); border-radius: 12px;
+  padding: 12px 14px;
+}
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ---------- Connexion ---------- */
+.connexion {
+  min-height: 100dvh; display: grid; place-items: center; padding: 24px 16px;
+  background:
+    radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 45%),
+    radial-gradient(circle at 90% 90%, color-mix(in srgb, var(--olive) 18%, transparent), transparent 45%),
+    var(--fond);
+}
+.connexion__carte {
+  width: 100%; max-width: 400px;
+  background: var(--surface); border-radius: 24px; box-shadow: var(--ombre);
+  padding: 32px 24px; text-align: center;
+}
+.connexion__carte form { text-align: left; margin-top: 24px; }
+.connexion__carte .bouton { width: 100%; margin-top: 6px; }
+.connexion__logo {
+  width: 76px; height: 76px; margin: 0 auto 12px; border-radius: 22px;
+  display: grid; place-items: center; background: var(--accent); color: var(--accent-texte);
+}
+.connexion__accroche { color: var(--texte-doux); margin: 0; }
+
+/* ---------- Barre de navigation (bas d'écran) ---------- */
+.barre-nav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  display: flex; justify-content: space-around;
+  height: calc(var(--haut-nav) + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--bordure);
+}
+.barre-nav__lien {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  color: var(--texte-doux); text-decoration: none; font-size: .72rem; font-weight: 700;
+}
+.barre-nav__lien.active { color: var(--accent); }
+.barre-nav__lien.est-inactif { opacity: .4; }
+
+@media (min-width: 900px) {
+  .barre-nav { top: 0; bottom: auto; height: 64px; padding: 0 calc(50% - 550px); justify-content: flex-end; gap: 8px; border-top: 0; border-bottom: 1px solid var(--bordure); }
+  .barre-nav__lien { flex: 0 0 auto; flex-direction: row; gap: 8px; padding: 0 16px; font-size: .95rem; }
+  .contenu { padding-top: 96px; padding-bottom: 40px; }
+}

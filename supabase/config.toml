@@ -1,0 +1,13 @@
+# Configuration minimale pour l'outil en ligne de commande Supabase.
+# Le vrai projet est choisi au moment du déploiement (voir .github/workflows/supabase.yml).
+project_id = "cuisto"
+
+[api]
+schemas = ["public"]
+
+[auth]
+site_url = "https://w45ffvv7k6-eng.github.io/chefcuisto/"
+enable_signup = false
+
+[auth.email]
+enable_signup = false
