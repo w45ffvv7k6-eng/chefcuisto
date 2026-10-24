@@ -1,0 +1,22 @@
+# Outil ponctuel : télécharge des photos libres de droits (Wikimedia Commons)
+# pour les recettes d'exemple, avec leurs licences.
+name: Télécharger les photos d'exemple
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p brutes
+          for f in Tarte_aux_pommes.jpg Tarte_aux_pommes_et_chantilly.jpg Tarte_normande.jpg ApplePie_\(brighter_and_warmer\).jpg Gratin_dauphinois.jpg Gratin_dauphinois_p1040854.jpg Potatoes_au_gratin_by_sa.jpg Heaalthy_Thai_Pumpkin_Soup.jpg Soup_Joumou.jpg Gratin_courge_butternut_1.jpg; do
+            curl -sSL -A "CuistoBot/1.0 (github.com/w45ffvv7k6-eng/chefcuisto)" -o "brutes/$f" "https://commons.wikimedia.org/wiki/Special:FilePath/$f?width=1600" || true
+            curl -sS -A "CuistoBot/1.0" "https://commons.wikimedia.org/w/api.php?action=query&titles=File:$f&prop=imageinfo&iiprop=extmetadata|url&format=json" -o "brutes/$f.json" || true
+          done
+          ls -la brutes
+      - run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add brutes && git commit -m "Photos candidates pour les exemples" && git push
