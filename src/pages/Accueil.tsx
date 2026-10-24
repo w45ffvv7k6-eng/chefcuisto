@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { chargerRecettes, type RecetteComplete } from '../lib/recettes'
 import { installerExemples } from '../lib/exemples'
 import { supabase } from '../lib/supabase'
@@ -44,8 +45,9 @@ export default function Accueil() {
       {recettes?.length === 0 && (
         <div className="vide">
           <p className="vide__titre">Ton carnet est encore vide</p>
+          <p><Link to="/ajouter" className="bouton bouton--principal">Ajouter ma première recette</Link></p>
           <p>Ajoute 3 recettes d'exemple pour voir à quoi ressemble Cuisto. Tu pourras les supprimer ensuite.</p>
-          <button className="bouton bouton--principal" onClick={ajouterExemples} disabled={installation}>
+          <button className="bouton" onClick={ajouterExemples} disabled={installation}>
             {installation ? 'Ajout en cours…' : 'Ajouter les recettes d’exemple'}
           </button>
         </div>

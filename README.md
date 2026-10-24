@@ -3,8 +3,9 @@
 Mon carnet de recettes personnel : les recettes de Maman et celles trouvées sur le web,
 avec de belles photos, sur ordinateur comme sur iPhone.
 
-> **État actuel : étape 2.** Galerie, fiches recettes avec portions ajustables, favoris
-> et étoiles, 3 recettes d'exemple. L'ajout et la modification arrivent à l'étape 3.
+> **État actuel : étape 3.** Galerie, fiches recettes avec portions ajustables, favoris
+> et étoiles, 3 recettes d'exemple, ajout / modification / suppression avec photos.
+> L'import depuis une URL arrive à l'étape 4.
 
 ## Comment ça marche
 

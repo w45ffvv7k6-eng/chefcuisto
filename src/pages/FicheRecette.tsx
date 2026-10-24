@@ -63,6 +63,9 @@ export default function FicheRecette() {
         <button className="bouton-rond fiche__retour" onClick={() => naviguer(-1)} aria-label="Retour">
           <Icone nom="retour" />
         </button>
+        <Link to={`/recette/${r.id}/modifier`} className="bouton-rond fiche__modifier" aria-label="Modifier la recette">
+          <Icone nom="crayon" />
+        </Link>
         <button className={r.favori ? 'bouton-rond fiche__favori est-actif' : 'bouton-rond fiche__favori'}
           onClick={() => changer({ favori: !r.favori })} aria-pressed={r.favori}
           aria-label={r.favori ? 'Retirer des favoris' : 'Ajouter aux favoris'}>
@@ -149,7 +152,7 @@ export default function FicheRecette() {
             <div className="galerie">
               {autres.map((p) => (
                 <button key={p.id} onClick={() => setAgrandie(p)} className="galerie__vignette">
-                  <img src={urlPhoto(p.chemin)} alt={p.legende} loading="lazy" />
+                  <img src={urlPhoto(p.miniature ?? p.chemin)} alt={p.legende} loading="lazy" />
                 </button>
               ))}
             </div>

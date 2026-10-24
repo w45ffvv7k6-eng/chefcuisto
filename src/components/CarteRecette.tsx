@@ -11,7 +11,7 @@ export default function CarteRecette({ recette }: { recette: RecetteComplete }) 
   return (
     <Link to={`/recette/${recette.id}`} className="carte">
       <div className="carte__image">
-        {photo ? <img src={urlPhoto(photo.chemin)} alt="" loading="lazy" /> : <div className="carte__sans-photo"><Icone nom="toque" taille={48} /></div>}
+        {photo ? <img src={urlPhoto(photo.miniature ?? photo.chemin)} alt="" loading="lazy" /> : <div className="carte__sans-photo"><Icone nom="toque" taille={48} /></div>}
         <span className={`badge badge--${recette.origine}`}>{ORIGINES[recette.origine]}</span>
         {recette.favori && <span className="carte__favori" aria-label="Favori"><Icone nom="coeur" taille={18} plein /></span>}
       </div>

@@ -300,3 +300,65 @@ span.etoile { cursor: default; }
   .fiche { margin-top: -96px; }
   .fiche__retour, .fiche__favori { top: 80px; }
 }
+
+/* ---------- Formulaire ---------- */
+.formulaire { max-width: 760px; margin: 0 auto; padding-bottom: 90px; }
+.formulaire .bloc h2 { margin-bottom: 14px; }
+.aide { color: var(--texte-doux); font-size: .85rem; font-weight: 400; margin: 0 0 10px; }
+label .aide { margin-left: 4px; }
+textarea { resize: vertical; line-height: 1.45; }
+.champ { margin-bottom: 14px; }
+.champ__label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: 6px; }
+.rangee { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0 12px; }
+.rangee--centree { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+.case { display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.case input { width: 22px; height: 22px; margin: 0; accent-color: var(--accent); }
+
+.depot {
+  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
+  padding: 22px; border: 2px dashed var(--bordure); border-radius: var(--rayon); color: var(--texte-doux);
+}
+.depot p { margin: 0; }
+.depot.est-survole { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+.photos-form { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+.photos-form li { position: relative; }
+.photos-form img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; border: 3px solid transparent; }
+.photos-form li.est-principale img { border-color: var(--accent); }
+.photos-form select { margin-top: 6px; padding: 8px 10px; font-size: 15px; }
+.photos-form__actions { position: absolute; top: 6px; right: 6px; display: flex; gap: 6px; }
+.photos-form__actions .bouton-rond { background: rgba(255, 255, 255, .92); color: #2b211b; }
+.photos-form li.est-principale .photos-form__actions .bouton-rond:first-child { color: #e0a43a; }
+
+.apercu-ingredients { margin-top: 12px; }
+.apercu-ingredients summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+
+.etapes-form { list-style: none; padding: 0; margin: 0 0 14px; }
+.etapes-form li { padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px dashed var(--bordure); }
+.etapes-form__tete { display: flex; justify-content: space-between; align-items: center; }
+.etapes-form__numero {
+  width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--police-titre); font-weight: 700; background: var(--surface-2); color: var(--accent);
+}
+.etapes-form__boutons { display: flex; gap: 6px; }
+.etapes-form__boutons .bouton-rond:disabled { opacity: .35; }
+.etapes-form__photo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+.etapes-form__photo img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; }
+.etapes-form__photo select { flex: 1 1 160px; width: auto; margin: 0; padding: 8px 10px; font-size: 15px; }
+.bouton--discret { min-height: 40px; padding: 0 14px; font-weight: 600; }
+.bouton--danger { width: 100%; color: #c0392b; border-color: color-mix(in srgb, #c0392b 40%, transparent); margin-bottom: 16px; }
+
+.barre-enregistrer {
+  position: fixed; left: 0; right: 0; bottom: calc(var(--haut-nav) + env(safe-area-inset-bottom)); z-index: 9;
+  padding: 10px 16px; background: color-mix(in srgb, var(--fond) 92%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--bordure);
+}
+.barre-enregistrer .erreur { margin: 0 auto 8px; max-width: 760px; }
+.barre-enregistrer__boutons { display: flex; gap: 10px; max-width: 760px; margin: 0 auto; }
+.barre-enregistrer__boutons .bouton { flex: 1; }
+.barre-enregistrer__boutons .bouton--principal { flex: 2; }
+@media (min-width: 900px) { .barre-enregistrer { bottom: 0; } }
+
+.fiche__modifier { position: absolute; top: calc(env(safe-area-inset-top) + 14px); right: 70px; z-index: 2; background: rgba(255, 255, 255, .92); color: #2b211b; }
+@media (min-width: 900px) { .fiche__modifier { top: 80px; } }
+[hidden] { display: none !important; }

@@ -12,6 +12,11 @@ const CHEMINS: Record<string, string> = {
   personnes: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 3.1a4 4 0 0 1 0 7.8M22 21v-1a6 6 0 0 0-4-5.7',
   niveau: 'M4 20v-4M10 20v-9M16 20V8M22 20V4',
   lien: 'M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1',
+  photo: 'M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+  croix: 'M6 6l12 12M18 6L6 18',
+  haut: 'M6 15l6-6 6 6',
+  bas: 'M6 9l6 6 6-6',
+  crayon: 'M4 20h4L19 9l-4-4L4 16zM14 6l4 4',
   toque: 'M6 14a4 4 0 0 1-.5-8A5 5 0 0 1 12 3a5 5 0 0 1 6.5 3 4 4 0 0 1-.5 8v6H6zM6 17h12',
 }
 

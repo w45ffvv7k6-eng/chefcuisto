@@ -3,7 +3,7 @@ import Icone from './Icone'
 
 const LIENS = [
   { to: '/', label: 'Recettes', icone: 'livre' },
-  { to: '/ajouter', label: 'Ajouter', icone: 'plus', bientot: true },
+  { to: '/ajouter', label: 'Ajouter', icone: 'plus' },
   { to: '/courses', label: 'Courses', icone: 'panier', bientot: true },
   { to: '/reglages', label: 'Réglages', icone: 'reglages' },
 ]
