@@ -5,7 +5,7 @@ name: Mettre à jour Supabase
 on:
   push:
     branches: [main]
-    paths: ['supabase/**']
+    paths: ['supabase/**', 'scripts/migrer.sh', '.github/workflows/supabase.yml']
   workflow_dispatch:
 
 jobs:
