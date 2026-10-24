@@ -25,7 +25,7 @@ pour le mode hors connexion).
 ### a) Créer le projet Supabase
 
 1. Sur [supabase.com](https://supabase.com), connecte-toi avec GitHub et crée un projet
-   nommé `cuisto` (région *Central EU (Zurich)* ou *Frankfurt*). **Note le mot de passe de la base.**
+   nommé `cuisto` (région *Central EU (Zurich)* ou *Frankfurt*).
 2. Dans **Authentication → Users**, clique **Add user → Create new user**, entre ton e-mail
    et un mot de passe, et coche **Auto Confirm User**. C'est ton compte pour te connecter à Cuisto.
 3. Dans **Authentication → Sign In / Providers**, désactive **Allow new users to sign up**,
@@ -43,12 +43,11 @@ Onglet **Variables** (valeurs non secrètes) :
 | `VITE_SUPABASE_ANON_KEY` | Project Settings → API Keys → `anon` `public` |
 | `SUPABASE_PROJECT_REF` | Le `xxxx` de l'adresse ci-dessus |
 
-Onglet **Secrets** (valeurs secrètes, que personne ne verra) :
+Onglet **Secrets** (valeur secrète, que personne ne verra) :
 
 | Nom | Où la trouver |
 | --- | --- |
-| `SUPABASE_ACCESS_TOKEN` | [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens) → Generate new token |
-| `SUPABASE_DB_PASSWORD` | Le mot de passe de la base noté à l'étape a) |
+| `SUPABASE_ACCESS_TOKEN` | [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens) → Generate new token (commence par `sbp_`) |
 
 ### c) Activer GitHub Pages
 
