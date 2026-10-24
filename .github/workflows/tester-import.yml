@@ -1,0 +1,24 @@
+# Vérifie que l'import fonctionne sur de vrais sites de recettes.
+name: Tester l'import
+on:
+  push:
+    branches: [main]
+    paths: ['supabase/functions/importer-recette/**', 'scripts/tester-import.ts', '.github/workflows/tester-import.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'   # chaque lundi, pour savoir si un site a changé
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          node --experimental-strip-types scripts/tester-import.ts \
+            "https://www.marmiton.org/recettes/recette_tarte-aux-pommes_18588.aspx" \
+            "https://www.marmiton.org/recettes/recette_gratin-dauphinois-facile_20708.aspx" \
+            "https://www.bettybossi.ch/fr/recettes/recette/gratin-de-pates-10007109/" \
+            "https://www.bettybossi.ch/de/rezepte/rezept/pasta-gratin-10007109/" \
+            "https://www.750g.com/gratin-dauphinois-r1374.htm"
