@@ -53,3 +53,16 @@ describe('extraction des recettes', () => {
     expect(r).toMatchObject({ titre: 'Gâteau de Mamie', image: 'https://a.ch/g.jpg', description: 'Moelleux', ingredients: ['200 g de sucre'], methode: 'microdata' })
   })
 })
+
+describe('JSON-LD mal formé', () => {
+  it('répare les retours à la ligne et les virgules en trop', () => {
+    const html = `<script type="application/ld+json">{ "@type": "Recipe", "name": "Gratin",
+      "recipeIngredient": ["1 kg de pommes de terre",],
+      "recipeInstructions": "Couper
+les pommes de terre.", }</script>`
+    const r = extraireRecette(html, 'https://a.ch')!
+    expect(r.titre).toBe('Gratin')
+    expect(r.ingredients).toEqual(['1 kg de pommes de terre'])
+    expect(r.etapes[0].texte).toBe('Couper les pommes de terre.')
+  })
+})

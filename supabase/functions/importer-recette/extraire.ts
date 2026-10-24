@@ -155,11 +155,22 @@ function itemprops(html: string, nom: string): string[] {
   return [...html.matchAll(re)].map((m) => texteBrut(m[2])).filter(Boolean)
 }
 
+// Beaucoup de sites publient un JSON légèrement invalide (retours à la ligne dans les textes,
+// virgules en trop, commentaires) : on le répare avant de le lire.
+function lireJson(brut: string): Json {
+  const t = brut.trim().replace(/^<!--|-->$/g, '').replace(/^\/\*<!\[CDATA\[\*\/|\/\*\]\]>\*\/$/g, '')
+  try {
+    return JSON.parse(t)
+  } catch {
+    return JSON.parse(t.replace(/[\u0000-\u001f]+/g, ' ').replace(/,\s*([}\]])/g, '$1'))
+  }
+}
+
 export function extraireRecette(html: string, url: string): RecetteImportee | null {
   // 1. JSON-LD
   for (const m of html.matchAll(/<script[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
-      const r = trouverRecette(JSON.parse(m[1].trim()))
+      const r = trouverRecette(lireJson(m[1]))
       if (r) return depuisJsonLd(r, url)
     } catch { /* bloc JSON invalide : on essaie le suivant */ }
   }
