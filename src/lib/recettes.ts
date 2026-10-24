@@ -2,6 +2,8 @@
 import { supabase } from './supabase'
 import type { Photo, Recette } from './types'
 
+// Deux liens existent entre recettes et photos (les photos d'une recette, et sa photo principale) :
+// on précise lequel suivre.
 export type RecetteComplete = Recette & { photos: Photo[] }
 
 const BUCKET = 'photos'
@@ -20,14 +22,14 @@ export function photoPrincipale(r: RecetteComplete): Photo | undefined {
 export async function chargerRecettes(): Promise<RecetteComplete[]> {
   const { data, error } = await supabase
     .from('recettes')
-    .select('*, photos(*)')
+    .select('*, photos!photos_recette_id_fkey(*)')
     .order('modifie_le', { ascending: false })
   if (error) throw error
   return data as RecetteComplete[]
 }
 
 export async function chargerRecette(id: string): Promise<RecetteComplete | null> {
-  const { data, error } = await supabase.from('recettes').select('*, photos(*)').eq('id', id).maybeSingle()
+  const { data, error } = await supabase.from('recettes').select('*, photos!photos_recette_id_fkey(*)').eq('id', id).maybeSingle()
   if (error) throw error
   if (data) (data as RecetteComplete).photos.sort((a, b) => a.ordre - b.ordre)
   return data as RecetteComplete | null
