@@ -15,7 +15,13 @@ for (const url of process.argv.slice(2)) {
     const html = await r.text()
     const recette = extraireRecette(html, url)
     const ok = Boolean(r.ok && recette && recette.ingredients.length && recette.etapes.length)
-    if (!ok) echecs++
+    if (!ok) {
+      echecs++
+      // Aide au diagnostic : quels blocs de données structurées la page contient-elle ?
+      const blocs = [...html.matchAll(/<script[^>]*ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => m[1].trim().slice(0, 300).replace(/\s+/g, ' '))
+      console.log(`::warning::${blocs.length} bloc(s) JSON-LD : ${blocs.join(' ||| ').slice(0, 900)}`)
+      console.log(`::warning::itemprop : ${[...new Set([...html.matchAll(/itemprop=["']([^"']+)/g)].map((m) => m[1]))].join(', ').slice(0, 500)}`)
+    }
     console.log(`${ok ? 'OK ' : 'ÉCHEC'} ${r.status} ${url}`)
     console.log(JSON.stringify(recette, null, 1)?.slice(0, 1800))
     console.log(`::${ok ? 'notice' : 'warning'}::${r.status} ${recette?.methode ?? 'rien'} · ${recette?.ingredients.length ?? 0} ingr. · ${recette?.etapes.length ?? 0} étapes · prépa ${recette?.temps_preparation} · cuisson ${recette?.temps_cuisson} · ${recette?.portions} pers. · image ${recette?.image ? 'oui' : 'non'} · « ${recette?.titre} » — ${url}`)
