@@ -1,7 +1,10 @@
 # Outil ponctuel : télécharge des photos libres de droits (Wikimedia Commons)
 # pour les recettes d'exemple, avec leurs licences.
 name: Télécharger les photos d'exemple
-on: workflow_dispatch
+on:
+  push:
+    branches: [images-exemples]
+    paths: [".github/workflows/images.yml"]
 permissions:
   contents: write
 jobs:
