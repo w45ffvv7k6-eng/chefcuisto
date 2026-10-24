@@ -29,8 +29,8 @@ jobs:
           URL: ${{ vars.VITE_SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
           CLE: ${{ vars.VITE_SUPABASE_ANON_KEY || secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
-          echo "::notice::VITE_SUPABASE_URL ${URL:+présente}${URL:-ABSENTE} · VITE_SUPABASE_ANON_KEY ${CLE:+présente}${CLE:-ABSENTE}"
-          case "$URL" in https://*.supabase.co|https://*.supabase.co/) ;; "") ;; *) echo "::warning::VITE_SUPABASE_URL ne ressemble pas à https://xxxx.supabase.co" ;; esac
+          if [ -n "$URL" ]; then echo "::notice::VITE_SUPABASE_URL présente"; else echo "::warning::VITE_SUPABASE_URL absente"; fi
+          if [ -n "$CLE" ]; then echo "::notice::VITE_SUPABASE_ANON_KEY présente"; else echo "::warning::VITE_SUPABASE_ANON_KEY absente"; fi
       - run: npm ci
       - run: npm test
       - run: npm run build
