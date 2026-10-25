@@ -1,15 +1,15 @@
 /* ---------- Couleurs et typographie ---------- */
 :root {
-  --fond: #fbf6ee;
+  --fond: #ffffff;
   --surface: #ffffff;
-  --surface-2: #f3eadc;
+  --surface-2: #f6f0e8;
   --texte: #2b211b;
   --texte-doux: #7a6a5d;
   --accent: #b5543a;          /* terracotta */
   --accent-texte: #ffffff;
   --olive: #6f7a3e;
-  --bordure: #e6d9c6;
-  --ombre: 0 6px 24px rgba(74, 46, 26, 0.10);
+  --bordure: #ebe2d6;
+  --ombre: 0 4px 20px rgba(74, 46, 26, 0.10);
   --rayon: 18px;
   --police-titre: 'Fraunces', Georgia, serif;
   --police-texte: 'Nunito Sans', -apple-system, system-ui, sans-serif;

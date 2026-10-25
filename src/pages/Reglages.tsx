@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { appliquerTheme, lireTheme, type Theme } from '../lib/theme'
+import { choisirTheme, lireTheme, type Theme } from '../lib/theme'
 
 const THEMES: { valeur: Theme; label: string }[] = [
-  { valeur: 'auto', label: 'Automatique' },
   { valeur: 'clair', label: 'Clair' },
   { valeur: 'sombre', label: 'Sombre' },
+  { valeur: 'auto', label: 'Comme l’appareil' },
 ]
 
 export default function Reglages({ email }: { email: string }) {
@@ -13,7 +13,7 @@ export default function Reglages({ email }: { email: string }) {
 
   function choisir(t: Theme) {
     setTheme(t)
-    appliquerTheme(t)
+    choisirTheme(t)
   }
 
   return (
