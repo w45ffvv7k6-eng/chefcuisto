@@ -475,3 +475,24 @@ textarea { resize: vertical; line-height: 1.45; }
 @media (min-width: 900px) {
   .cuisine__panneau { left: auto; width: 400px; top: 70px; border-radius: 24px 0 0 0; }
 }
+
+/* ---------- Animation de cercles lumineux ---------- */
+.animation-shader { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: #000; }
+
+.connexion--animee { position: relative; overflow: hidden; background: #000; }
+.connexion--animee .connexion__carte { position: relative; z-index: 1; background: rgba(255, 255, 255, .94); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); color: #2b211b; }
+.connexion--animee .connexion__carte input { background: #fff; color: #2b211b; }
+
+.bandeau-anime {
+  position: relative; overflow: hidden; height: 200px; margin-bottom: 20px;
+  border-radius: var(--rayon); background: #000; color: #fff;
+  display: flex; flex-direction: column; justify-content: flex-end; padding: 20px 22px;
+}
+.bandeau-anime > *:not(canvas) { position: relative; z-index: 1; pointer-events: none; }
+.bandeau-anime .surtitre { color: rgba(255, 255, 255, .8); }
+.bandeau-anime h1 { margin: 0; color: #fff; text-shadow: 0 2px 16px rgba(0, 0, 0, .6); }
+@media (min-width: 900px) { .bandeau-anime { height: 240px; } }
+.bandeau-anime::after {
+  content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0, 0, 0, .75), rgba(0, 0, 0, 0) 65%);
+}

@@ -5,6 +5,7 @@ import { installerExemples } from '../lib/exemples'
 import { supabase } from '../lib/supabase'
 import CarteRecette from '../components/CarteRecette'
 import Icone from '../components/Icone'
+import AnimationShader from '../components/AnimationShader'
 import { filtrer, filtresActifs, filtresVides, type Filtres } from '../lib/recherche'
 import { CATEGORIES, ORIGINES, type Categorie, type Origine } from '../lib/types'
 
@@ -59,7 +60,8 @@ export default function Accueil() {
 
   return (
     <section className="page">
-      <header className="page__entete">
+      <header className="bandeau-anime">
+        <AnimationShader />
         <p className="surtitre">Mon carnet</p>
         <h1>Recettes</h1>
       </header>

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { supabase } from '../lib/supabase'
 import Icone from '../components/Icone'
+import AnimationShader from '../components/AnimationShader'
 
 export default function Connexion() {
   const [email, setEmail] = useState('')
@@ -22,7 +23,8 @@ export default function Connexion() {
   }
 
   return (
-    <div className="connexion">
+    <div className="connexion connexion--animee">
+      <AnimationShader />
       <div className="connexion__carte">
         <div className="connexion__logo"><Icone nom="toque" taille={44} /></div>
         <h1>Cuisto</h1>
